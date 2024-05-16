@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
-import { getDocument, GlobalWorkerOptions } from "pdfjs-dist/legacy/build/pdf";
-import type { PDFDocumentProxy } from "pdfjs-dist";
+// import { getDocument, GlobalWorkerOptions } from "pdfjs-dist/legacy/build/pdf";
+// import { getDocument, GlobalWorkerOptions } from "pdfjs-dist/legacy/build/pdf";
+import { getDocument, GlobalWorkerOptions, type PDFDocumentProxy } from "pdfjs-dist";
 
 interface Props {
   /** See `GlobalWorkerOptionsType`. */
@@ -98,8 +99,8 @@ export class PdfLoader extends Component<Props, State> {
         {error
           ? this.renderError()
           : !pdfDocument || !children
-          ? beforeLoad
-          : children(pdfDocument)}
+            ? beforeLoad
+            : children(pdfDocument)}
       </>
     );
   }

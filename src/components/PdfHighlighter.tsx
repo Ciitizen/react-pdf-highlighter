@@ -4,10 +4,10 @@ import "../style/PdfHighlighter.css";
 
 import {
   EventBus,
-  NullL10n,
+  // NullL10n,
   PDFLinkService,
   PDFViewer,
-} from "pdfjs-dist/legacy/web/pdf_viewer";
+} from "pdfjs-dist/legacy/web/pdf_viewer.mjs"
 import type {
   IHighlight,
   LTWH,
@@ -119,7 +119,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
   highlightRoots: {
     [page: number]: { reactRoot: Root; container: Element };
   } = {};
-  unsubscribe = () => {};
+  unsubscribe = () => { };
 
   constructor(props: Props<T_HT>) {
     super(props);
@@ -184,7 +184,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         textLayerMode: 2,
         removePageBorders: true,
         linkService: this.linkService,
-        l10n: NullL10n,
+        // l10n: NullL10n,
       });
 
     this.linkService.setDocument(pdfDocument);
@@ -390,7 +390,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         ...pageViewport.convertToPdfPoint(
           0,
           scaledToViewport(boundingRect, pageViewport, usePdfCoordinates).top -
-            scrollMargin
+          scrollMargin
         ),
         0,
       ],
