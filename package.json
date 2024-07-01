@@ -1,6 +1,6 @@
 {
   "name": "react-pdf-highlighter",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "Set of React components for PDF annotation",
   "author": "Artem Tyurin <artem.tyurin@gmail.com>",
   "license": "MIT",
@@ -19,9 +19,9 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "(cd ./example && vite)",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:copy-styles && npm run build:example",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:copy-styles",
     "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir ./dist/cjs",
+    "build:cjs": "tsc --outDir ./dist/cjs",
     "build:copy-styles": "cp -r ./src/style ./dist/esm; cp -r ./src/style ./dist/cjs",
     "build:example": "(cd ./example && tsc && vite build)",
     "test": "tsc && npm run format:check && npm run test:integration",
@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
-    "pdfjs-dist": "3.0.279",
+    "pdfjs-dist": "4.3.136",
     "react-rnd": "^10.1.10"
   },
   "repository": {
