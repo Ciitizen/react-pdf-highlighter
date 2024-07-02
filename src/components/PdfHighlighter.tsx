@@ -3,11 +3,15 @@ import "../style/pdf_viewer.css";
 import "../style/PdfHighlighter.css";
 
 import {
+  PDFViewer as PDFViewerType,
+} from "pdfjs-dist/web/pdf_viewer.mjs";
+const {
   EventBus,
-  NullL10n,
+  GenericL10n,
   PDFLinkService,
   PDFViewer,
-} from "pdfjs-dist/web/pdf_viewer";
+} = await import("pdfjs-dist/web/pdf_viewer.mjs");
+
 import type {
   IHighlight,
   LTWH,
@@ -111,7 +115,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
     externalLinkTarget: 2,
   });
 
-  viewer!: PDFViewer;
+  viewer!: PDFViewerType;
 
   resizeObserver: ResizeObserver | null = null;
   containerNode?: HTMLDivElement | null = null;
@@ -184,7 +188,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         textLayerMode: 2,
         removePageBorders: true,
         linkService: this.linkService,
-        l10n: NullL10n,
+        l10n: new GenericL10n('en'),
       });
 
     this.linkService.setDocument(pdfDocument);
@@ -205,8 +209,10 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
       return null;
     }
 
+    console.log(textLayer.div)
+
     return findOrCreateContainerLayer(
-      textLayer.textLayerDiv,
+      textLayer.div,
       "PdfHighlighter__highlight-layer"
     );
   }
