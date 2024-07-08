@@ -5,6 +5,7 @@ import "../style/Highlight.css";
 import type { LTWHP } from "../types.js";
 
 interface Props {
+  className?: string;
   position: {
     boundingRect: LTWHP;
     rects: Array<LTWHP>;
@@ -28,13 +29,17 @@ export class Highlight extends Component<Props> {
       onMouseOut,
       comment,
       isScrolledTo,
+      className,
     } = this.props;
 
     const { rects, boundingRect } = position;
 
     return (
       <div
-        className={`Highlight ${isScrolledTo ? "Highlight--scrolledTo" : ""}`}
+        className={`Highlight 
+          ${isScrolledTo ? "Highlight--scrolledTo" : ""} 
+          ${className || ""}
+        `}
       >
         {comment ? (
           <div
