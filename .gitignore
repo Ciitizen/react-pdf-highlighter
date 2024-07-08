@@ -5,3 +5,5 @@ dist-ssr
 dist-example
 *.local
 types
+
+.jfrog
